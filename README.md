@@ -28,47 +28,63 @@
 
 ---
 
-## Installation
+## 📦 [Download ShellNotes v1.0](https://github.com/cgarey2014/shell_notes/releases/tag/v1.0)
 
-1. Clone the repository:
+---
 
-    ```bash
-    git clone https://github.com/cgarey2014/shell_notes.git
-    cd shell_notes
-    ```
+## 🚀 Installation
 
-2. Run the installation script:
-
-    ```bash
-    sudo ./install.sh
-    ```
-
-3. After installation, run the program using:
-
-    ```bash
-    shellnotes
-    ```
-
-4. To uninstall, run the following:
+1. **Download and unzip the release archive:**
    ```bash
-   sudo ./scripts/uninstall.sh
+   unzip shellnotes-v1.0.zip
+   cd shellnotes-release
    ```
-   
-## Usage
+2. **Run the installation script:**
 
-To start a new session:
+  ```bash
+  sudo ./install.sh
+  ```
 
-```bash
-shellnotes
-```
+4. **Launch ShellNotes with:**
+
+  ```bash
+  shellnotes
+  ```
+
+## To uninstall ShellNotes:
+
+  ```bash
+  sudo ./scripts/uninstall.sh
+  ```
+
+## 🖥️ Usage
+**To start a new shell session with ShellNotes:**
+
+  ```bash
+  shellnotes
+  ```
+
 - A new terminal window will launch.
-- Your full shell session will be recorded.
-- To end the session, type:
+
+- Your full shell session will be recorded to a timestamped .cast file using asciinema.
+
+**To end the session, simply type:**
+
 ```bash
 exit
 ```
 
-Requirements
-
+## 📋 Requirements
 - Python 3.x
-- A supported terminal emulator (e.g., gnome-terminal, xfce4-terminal, xterm)
+
+- A supported terminal emulator:
+
+  - gnome-terminal
+
+  - xfce4-terminal
+
+  - xterm
+
+  - konsole (if installed)
+
+## ℹ️ ShellNotes is a minimalist terminal session recorder designed for cybersecurity professionals, educators, and students to document shell activity with clean and portable .cast recordings.
