@@ -51,7 +51,7 @@
    shellnotes
    ```
 
-## To uninstall ShellNotes:
+## 🗑️ To uninstall ShellNotes:
 
    ```bash
    sudo ./scripts/uninstall.sh
