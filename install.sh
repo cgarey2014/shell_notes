@@ -6,6 +6,20 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
+# Alert user of what the install script is about to perform on their system
+echo "🔧 This script will install the following:"
+echo "  - Python 3 and pip3"
+echo "  - Python dependencies from requirements.txt"
+echo "  - Move shellnotes.py to ~/scripts"
+echo "  - Create a launcher script at /usr/local/bin/shellnotes"
+echo "  - Ensure the script is executable"
+echo "  - Ensure the script is run with root privileges"
+echo "  - Ensure the script is run with sudo"
+echo "❗ Please review the above steps before proceeding. ❗"
+echo "  -- Press Enter to continue or Ctrl+C to cancel. --  "
+read -r
+echo "✅ Proceeding with installation..."
+
 # Install Python dependencies silently, but log if it fails
 echo "📦 Installing Python dependencies from requirements.txt..."
 if ! pip3 install --break-system-packages -r requirements.txt > /dev/null 2>&1; then
