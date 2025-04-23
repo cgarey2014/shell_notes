@@ -8,7 +8,7 @@
 - Captures and logs the full session (input/output) to a file
 - Automatically stores logs in a dedicated directory
 - Lightweight and easy to use
-— Ability to list, search and delete logs.
+— Ability to list, search and delete logs
 
 ## Installation
 
@@ -31,7 +31,6 @@
     shellnotes
     ```
 
-—
 
 ## Usage
 
