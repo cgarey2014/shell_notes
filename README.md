@@ -1,7 +1,3 @@
-<p align=“center”>
-  <img src="https://github.com/cgarey2014/shell_notes/blob/main/assets/banner.png" alt=“Shell Notes Banner”>
-</p>
-
 # Shell Notes
 
 **Shell Notes** is a minimalist Python-based utility that allows you to open an interactive terminal shell session while automatically logging all input and output to a local file. You then have the ability to analyze those logs, through lists and a search function. This tool is ideal for system administrators, educators, and cybersecurity professionals who want to retain an auditable command history.
