@@ -19,7 +19,7 @@ echo "✅ Proceeding with installation..."
 
 INSTALL_DIR="/opt/shellnotes"
 LAUNCHER_PATH="/usr/local/bin/shellnotes"
-SCRIPT_PATH="$INSTALL_DIR/shellnotes.py"
+SCRIPT_PATH="$INSTALL_DIR/scripts/shellnotes.py"
 
 # Remove previous installation
 sudo rm -rf "$INSTALL_DIR" > /dev/null 2>&1
