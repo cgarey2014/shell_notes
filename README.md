@@ -1,8 +1,6 @@
 # Shell Notes
 
-**Shell Notes** is a minimalist Python-based utility that allows you to open an interactive terminal shell session while automatically logging all input and output to a local file. You then have the ability to analyze those logs, through lists and a search function. This tool is ideal for system administrators, educators, and cybersecurity professionals who want to retain an auditable command history.
-
-—
+**Shell Notes** is a lightweight Python utility designed to launch an interactive terminal shell session while automatically capturing and logging all input and output to a local file. It also provides tools to review, list, and search through these logs for easy analysis. This makes it particularly valuable for system administrators, educators, and cybersecurity professionals who require an auditable and searchable record of command-line activity
 
 ## Features
 
