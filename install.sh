@@ -6,67 +6,81 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-# Alert user of what the install script is about to perform on their system
 echo "🔧 This script will install the following:"
-echo "  - Python 3 and pip3"
+echo "  - Python 3 and pip3 (if not installed)"
 echo "  - Python dependencies from requirements.txt"
-echo "  - Move shellnotes.py to ~/scripts"
-echo "  - Create a launcher script at /usr/local/bin/shellnotes"
-echo "  - Ensure the script is executable"
-echo "  - Ensure the script is run with root privileges"
-echo "  - Ensure the script is run with sudo"
+echo "  - Copy ShellNotes to /opt/shellnotes"
+echo "  - Create a launcher at /usr/local/bin/shellnotes (opens in terminal)"
+echo "  - Make the launcher executable"
 echo "❗ Please review the above steps before proceeding. ❗"
-echo "  -- Press Enter to continue or Ctrl+C to cancel. --  "
+echo "  -- Press Enter to continue or Ctrl+C to cancel. --"
 read -r
 echo "✅ Proceeding with installation..."
 
-# Install Python dependencies silently, but log if it fails
-# Note: the flag --break-system-packages is only invoked due to new
-# Policies on Ubuntu and POP!os systems. It is safe to run.
-echo "📦 Installing Python dependencies from requirements.txt..."
-if ! pip3 install --break-system-packages -r requirements.txt > /dev/null 2>&1; then
-    echo "❌ Failed to install Python requirements. Please ensure pip3 is working properly."
-    exit 1
-fi
-echo "✅ Dependencies installation complete. Proceeding..."
-sleep 1
+INSTALL_DIR="/opt/shellnotes"
+LAUNCHER_PATH="/usr/local/bin/shellnotes"
+SCRIPT_PATH="$INSTALL_DIR/shellnotes.py"
 
-# Ensure ~/scripts exists
-SCRIPTS_DIR="$HOME/scripts"
-mkdir -p "$SCRIPTS_DIR"
+# Remove previous installation
+sudo rm -rf "$INSTALL_DIR" > /dev/null 2>&1
 
-# Move shellnotes.py
-echo "📁 Moving shellnotes.py to $SCRIPTS_DIR"
-cp shellnotes.py "$SCRIPTS_DIR/shellnotes.py"
+# Remove any previous symbolic link, file, or directory
+[ -L "$LAUNCHER_PATH" ] && sudo rm -f "$LAUNCHER_PATH" > /dev/null 2>&1
+[ -f "$LAUNCHER_PATH" ] && sudo rm -f "$LAUNCHER_PATH" > /dev/null 2>&1
+[ -d "$LAUNCHER_PATH" ] && sudo rm -rf "$LAUNCHER_PATH" > /dev/null 2>&1
 
-# Create launcher script
-LAUNCHER="/usr/local/bin/shellnotes"
-echo "⚙️ Creating launcher at $LAUNCHER"
+# Create the install directory and copy files
+echo "📁 Copying files to $INSTALL_DIR..."
+sudo mkdir -p "$INSTALL_DIR" > /dev/null 2>&1
+sudo cp -r ./* "$INSTALL_DIR" > /dev/null 2>&1
 
-cat << 'EOF' > "$LAUNCHER"
-#!/bin/bash
-
-SCRIPT_PATH="$HOME/scripts/shellnotes.py"
-
-# Function to detect terminal and run the script
-open_new_terminal() {
-    if command -v gnome-terminal >/dev/null 2>&1; then
-        gnome-terminal -- bash -c "python3 '$SCRIPT_PATH'; exec bash"
-    elif command -v xfce4-terminal >/dev/null 2>&1; then
-        xfce4-terminal --hold -e "python3 '$SCRIPT_PATH'"
-    elif command -v xterm >/dev/null 2>&1; then
-        xterm -hold -e "python3 '$SCRIPT_PATH'"
-    elif command -v konsole >/dev/null 2>&1; then
-        konsole --noclose -e python3 "$SCRIPT_PATH"
+# Install Python and pip if not already installed
+if ! command -v python3 &> /dev/null; then
+    echo "❌ Python 3 is not installed. Installing..."
+    if [ -f /etc/debian_version ]; then
+        sudo apt update -qq > /dev/null && sudo apt install python3 python3-pip -y > /dev/null 2>&1
+    elif [ -f /etc/redhat-release ]; then
+        sudo yum install python3 python3-pip -y > /dev/null 2>&1
     else
-        echo "❌ No supported terminal emulator found. Please install gnome-terminal, xfce4-terminal, xterm, or konsole."
+        echo "❌ Unsupported OS. Please install Python 3 manually."
         exit 1
     fi
-}
+fi
 
-open_new_terminal
+# Install Python requirements if present
+if [ -f "requirements.txt" ]; then
+    echo "📦 Installing Python dependencies..."
+    if ! python3 -m pip install --break-system-packages -r requirements.txt 2>&1 | grep -v -E "WARNING: Skipping .*dist-packages/asciinema.*|WARNING: Running pip as the 'root'" >/dev/null; then
+        echo "❌ Error: Failed to install Python requirements. Please ensure pip is installed and try again."
+        exit 1
+    fi
+fi
+
+# Create launcher script that opens in a new terminal
+echo "🚀 Creating launcher at $LAUNCHER_PATH..."
+sudo tee "$LAUNCHER_PATH" > /dev/null << EOF
+#!/bin/bash
+
+SCRIPT_PATH="$SCRIPT_PATH"
+
+if command -v gnome-terminal >/dev/null 2>&1; then
+    gnome-terminal -- bash -c "python3 '\$SCRIPT_PATH'; read -n 1 -s -r -p 'Press any key to exit...'"
+elif command -v xfce4-terminal >/dev/null 2>&1; then
+    xfce4-terminal --hold -e "bash -c 'python3 \"\$SCRIPT_PATH\"'"
+elif command -v konsole >/dev/null 2>&1; then
+    konsole --noclose -e bash -c "python3 '\$SCRIPT_PATH'"
+elif command -v xterm >/dev/null 2>&1; then
+    xterm -hold -e "python3 '\$SCRIPT_PATH'"
+else
+    echo "❌ No supported terminal emulator found. Please run manually:"
+    echo "python3 '\$SCRIPT_PATH'"
+    exit 1
+fi
 EOF
 
-chmod +x "$LAUNCHER"
+# Make the launcher executable
+sudo chmod +x "$LAUNCHER_PATH"
 
-echo "✅ Installation complete! You can now run 'shellnotes' from any terminal."
+# Final success message
+echo "✅ ShellNotes installed successfully!"
+echo "You can now launch it by typing: shellnotes"
