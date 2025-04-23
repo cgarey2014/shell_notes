@@ -6,7 +6,7 @@ Shell Notes is a simple Python application that allows you to drop into a termin
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/shell_notes.git
+    git clone https://github.com/cgarey2014/shell_notes.git
     cd shell_notes
     ```
 
