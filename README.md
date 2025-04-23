@@ -51,7 +51,7 @@
 
 4. To uninstall, run the following:
    ```bash
-   sudo ./uninstall.sh
+   sudo ./scripts/uninstall.sh
    ```
    
 ## Usage
