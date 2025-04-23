@@ -8,7 +8,7 @@ fi
 
 # Step 1: Install Python requirements
 echo "Installing Python dependencies from requirements.txt..."
-pip3 install -r requirements.txt || {
+pip3 install --break-system-packages -r requirements.txt || {
     echo "Failed to install Python requirements."
     exit 1
 }
