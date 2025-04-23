@@ -21,6 +21,8 @@ read -r
 echo "✅ Proceeding with installation..."
 
 # Install Python dependencies silently, but log if it fails
+# Note: the flag --break-system-packages is only invoked due to new
+# Policies on Ubuntu and POP!os systems. It is safe to run.
 echo "📦 Installing Python dependencies from requirements.txt..."
 if ! pip3 install --break-system-packages -r requirements.txt > /dev/null 2>&1; then
     echo "❌ Failed to install Python requirements. Please ensure pip3 is working properly."
