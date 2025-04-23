@@ -12,7 +12,6 @@
                                                                                                
 </pre>
 </div>
-# Shell Notes
 
 **Shell Notes** is a user-friendly terminal logging utility that gives you a clean, interactive interface to drop into shell sessions with full input/output logging. Whether you're auditing commands, studying terminal workflows, or keeping track of what you ran, **Shell Notes** makes logging simple and organized.
 
