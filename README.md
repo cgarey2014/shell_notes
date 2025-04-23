@@ -41,28 +41,28 @@
    ```
 2. **Run the installation script:**
 
-  ```bash
-  sudo ./install.sh
-  ```
+   ```bash
+   sudo ./install.sh
+   ```
 
 4. **Launch ShellNotes with:**
 
-  ```bash
-  shellnotes
-  ```
+   ```bash
+   shellnotes
+   ```
 
 ## To uninstall ShellNotes:
 
-  ```bash
-  sudo ./scripts/uninstall.sh
-  ```
+   ```bash
+   sudo ./scripts/uninstall.sh
+   ```
 
 ## 🖥️ Usage
 **To start a new shell session with ShellNotes:**
 
-  ```bash
-  shellnotes
-  ```
+   ```bash
+   shellnotes
+   ```
 
 - A new terminal window will launch.
 
@@ -70,9 +70,9 @@
 
 **To end the session, simply type:**
 
-```bash
-exit
-```
+   ```bash
+   exit
+   ```
 
 ## 📋 Requirements
 - Python 3.x
