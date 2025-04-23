@@ -28,6 +28,8 @@ if ! pip3 install --break-system-packages -r requirements.txt > /dev/null 2>&1; 
     echo "❌ Failed to install Python requirements. Please ensure pip3 is working properly."
     exit 1
 fi
+echo "✅ Dependencies installation complete. Proceeding..."
+sleep 1
 
 # Ensure ~/scripts exists
 SCRIPTS_DIR="$HOME/scripts"
