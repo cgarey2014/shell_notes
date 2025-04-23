@@ -38,3 +38,15 @@ To start a new session:
 
 ```bash
 shellnotes
+```
+- A new terminal window will launch.
+- Your full shell session will be recorded.
+- To end the session, type:
+```bash
+exit
+```
+
+Requirements
+
+- Python 3.x
+- A supported terminal emulator (e.g., gnome-terminal, xfce4-terminal, xterm)
