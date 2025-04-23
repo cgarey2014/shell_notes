@@ -1,5 +1,5 @@
 <p align=“center”>
-  <img src=“/assets/banner.png" alt=“Shell Notes Banner”>
+  <img src=“https://github.com/cgarey2014/assets/banner.png" alt=“Shell Notes Banner”>
 </p>
 
 # Shell Notes
