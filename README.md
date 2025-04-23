@@ -1,14 +1,19 @@
 # Shell Notes
 
-**Shell Notes** is a lightweight Python utility designed to launch an interactive terminal shell session while automatically capturing and logging all input and output to a local file. It also provides tools to review, list, and search through these logs for easy analysis. This makes it particularly valuable for system administrators, educators, and cybersecurity professionals who require an auditable and searchable record of command-line activity
+**Shell Notes** is a user-friendly terminal logging utility that gives you a clean, interactive interface to drop into shell sessions with full input/output logging. Whether you're auditing commands, studying terminal workflows, or keeping track of what you ran, **Shell Notes** makes logging simple and organized.
 
-## Features
+---
 
-- Launches a shell session in a new terminal window
-- Captures and logs the full session (input/output) to a file
-- Automatically stores logs in a dedicated directory
-- Lightweight and easy to use
-- Ability to review, search and delete logs
+## 🧰 Features
+
+- 🖥️ Fully interactive shell environment with session logging
+- 📂 Timestamped log files organized and easy to access
+- 🔍 Review logs with a searchable, numbered menu system
+- 🗑️ Option to delete unwanted logs right from the interface
+- 🧼 Clean interface with screen clearing between menus
+- ⚙️ Ready on boot, waits silently until invoked
+
+---
 
 ## Installation
 
@@ -31,7 +36,11 @@
     shellnotes
     ```
 
-
+4. To uninstall, run the following:
+   ```bash
+   sudo ./uninstall.sh
+   ```
+   
 ## Usage
 
 To start a new session:
