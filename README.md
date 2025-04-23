@@ -28,7 +28,7 @@
 
 ---
 
-## 📦 [Download ShellNotes v1.0](https://github.com/cgarey2014/shell_notes/releases/tag/v1.0)
+## 📦 [Download ShellNotes v1.0](https://github.com/cgarey2014/shell_notes/releases/tag/v1.0) *(right-click and open in new tab)*
 
 ---
 
