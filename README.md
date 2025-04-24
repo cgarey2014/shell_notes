@@ -87,4 +87,4 @@
 
   - konsole (if installed)
 
-## ℹ️ ShellNotes is a minimalist terminal session recorder designed for cybersecurity professionals, educators, and students to document shell activity with clean and portable .cast recordings.
+## ℹ️ ShellNotes is a minimalist terminal session recorder designed for cybersecurity professionals, educators, and students to document shell activity with clean and portable log files.
